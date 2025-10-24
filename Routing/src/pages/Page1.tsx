@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import type { Character } from "../types";
+import { CharacterContext } from "./CharacterContext";
 
 const Page1 = () => {
-    const [characters, setCharacters] = useState<Character[]>([]);
-
-    useEffect(() =>{
-      const fetchCharacters = async () => {
-        const response = await fetch('https://hp-api.onrender.com/api/characters');
-        const data = await response.json();
-        setCharacters(data.slice(0, 10));
-      }
-
-      fetchCharacters();
-    }, []);
+  const { characters } = useContext(CharacterContext);
 
   return (
     <div>
       <h1>Harry Potter Characters</h1>
+
+      {characters.length === 0 ? (
+        <p>Loading characters...</p>
+      ) : (
         <ul>
           {characters.map((character) => (
             <li key={character.name}>
@@ -27,6 +21,7 @@ const Page1 = () => {
             </li>
           ))}
         </ul>
+      )}
     </div>
   );
 };
