@@ -8,7 +8,7 @@ interface Verse {
   surah: {
     number: number;
     englishName: string;
-    name: string; // 👈 Arabic surah name
+    name: string; 
   };
 }
 
@@ -50,7 +50,6 @@ function App() {
       ) : (
         verse && (
           <div>
-            {/* Arabic verse */}
             <h2
               style={{
                 fontSize: "1.7em",
@@ -62,16 +61,13 @@ function App() {
               {arabicVerse}
             </h2>
 
-            {/* English translation */}
             <p style={{ fontSize: "1.1em", marginBottom: "0.5em" }}>{verse.text}</p>
 
-            {/* Surah info */}
             <p>
               Surah {verse.surah.name} ({verse.surah.englishName}) — Surah #
               {verse.surah.number}, Ayah {verse.numberInSurah}
             </p>
 
-            {/* Button */}
             <button onClick={fetchVerse}>New Verse</button>
           </div>
         )
