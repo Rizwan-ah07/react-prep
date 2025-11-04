@@ -2,14 +2,19 @@ import TasbeehProvider from "./TasbeehContext";
 import TasbeehCounter from "./TasbeehCounter";
 import { useContext } from "react";
 import { TasbeehContext } from "./TasbeehContext";
-import './App.css';
+import "./App.css";
 
 const TasbeehTotal = () => {
-  const { total } = useContext(TasbeehContext);
+  const { total, resetTotal } = useContext(TasbeehContext);
   return (
-    <h2 style={{ marginBottom: "20px" }}>
-      🕌 Total Tasbeeh Count: <span style={{ color: "#4CAF50" }}>{total}</span>
-    </h2>
+    <div style={{ marginBottom: "20px" }}>
+      <h2>
+        🕌 Total Tasbeeh Count: <span style={{ color: "#4CAF50" }}>{total}</span>
+      </h2>
+      <button onClick={resetTotal} style={{ marginTop: "10px" }}>
+        🔁 Reset All
+      </button>
+    </div>
   );
 };
 
@@ -29,4 +34,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
